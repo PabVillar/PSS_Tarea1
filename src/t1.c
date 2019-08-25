@@ -40,8 +40,8 @@ uint comprimir(uint *a, int nbits){
 		i++;	
 	}
 	
-
-	return res >> ((sizeof(uint)<<3) - (k-nbits));
+    uint n = sizeof(uint)<<3;
+	return res >> (n - (k-nbits));
 }
 
 //Parte b
