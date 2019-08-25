@@ -8,12 +8,13 @@
 
 typedef unsigned int uint;
 
+uint n = sizeof(uint)<<3;
 
 uint overwrite(uint res, int nbits, int pos, int val){
 
     uint val_desp;
 
-    val_desp = val << ((sizeof(uint)<<3) - nbits - pos);
+    val_desp = val << (n - nbits - pos);
 
     return res | val_desp;
 }
@@ -28,7 +29,7 @@ uint comprimir(uint *a, int nbits){
     int i = 0;
     for (k = nbits; k <= (sizeof(uint)<<3); k += nbits)
     {
-        aux[i] = a[i] << (sizeof(uint) << 3) - nbits >> ((sizeof(uint) << 3) - nbits);
+        aux[i] = (a[i] << n - nbits) >> (n - nbits);
         //printf("%d\n", aux[i]);
         res = overwrite(res,nbits,k-nbits,aux[i]);
         i++;
