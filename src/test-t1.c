@@ -29,7 +29,7 @@ uint comprimir(uint *a, int nbits){
     int i = 0;
     for (k = nbits; k <= (sizeof(uint)<<3); k += nbits)
     {
-        aux[i] = (a[i] << n - nbits) >> (n - nbits);
+        aux[i] = (a[i] << (n - nbits)) >> (n - nbits);
         //printf("%d\n", aux[i]);
         res = overwrite(res,nbits,k-nbits,aux[i]);
         i++;
